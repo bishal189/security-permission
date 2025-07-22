@@ -6,10 +6,11 @@ on:
 jobs:
   assign-label:
     runs-on: ubuntu-latest
+    env: issue_title:${{ github.event.issue.title }}
     steps:
       - name: Assign label
         run: |
-          issue_title="${{ github.event.issue.title }}"
+
           if [[ "$issue_title" == *"bug"* ]]; then
           echo "Issue is about a bug!"
           else
